@@ -1,0 +1,12 @@
+﻿@model List<news.Models.Post>
+
+@foreach (var item in Model)
+{
+<!-- Single Popular Blog -->
+<div class="single-popular-post">
+    <a href="@Url.Action("Detail", "Home", new { postId = item.Id })">
+        <h6>@item.Title</h6>
+    </a>
+    <p>@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(item.CreatedDate.Value.Month) @item.CreatedDate.Value.Day, @item.CreatedDate.Value.Year</p>
+</div>
+}

@@ -1,0 +1,35 @@
+﻿@model news.Models.Catagory
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="padding-top: 30px">Xóa</h2>
+
+<h3 class="text-danger">Bạn có muốn xóa phần tử này không ?</h3>
+
+<hr />
+<div>
+    <h4>Menu</h4>
+    <hr />
+    <dl class="dl-horizontal" style="font-size: 15px">
+        <dt class="text-success">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd class="text-success">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

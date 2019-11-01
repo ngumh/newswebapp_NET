@@ -1,0 +1,19 @@
+﻿@model List<news.Models.Post>
+@foreach (var item in Model)
+{
+    <!-- Single Featured Post -->
+    <div class="single-blog-post small-featured-post d-flex">
+        <div class="post-thumb">
+            <a href="@Url.Action("Category", "Home", new { id = item.Catagory_Id})"><img src="~/img/bg-img/@item.ImageURL" alt=""></a>
+        </div>
+        <div class="post-data">
+            <a href="@Url.Action("Category", "Home", new { id = item.Catagory_Id})" class="post-catagory">@item.Catagory.Name</a>
+            <div class="post-meta">
+                <a href="@Url.Action("Detail", "Home", new { postId = item.Id })" class="post-title">
+                    <h6>@item.Title</h6>
+                </a>
+                <p class="post-date"><span>@item.CreatedDate.Value.Hour:@item.CreatedDate.Value.Minute @item.CreatedDate.Value.ToString("tt", System.Globalization.CultureInfo.InvariantCulture)</span> | <span>@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(item.CreatedDate.Value.Month) @item.CreatedDate.Value.Day</span></p>
+            </div>
+        </div>
+    </div>
+}

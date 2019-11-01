@@ -1,0 +1,50 @@
+﻿@model IEnumerable<news.Models.Catagory>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <style>
+        div#link a{
+            color: white !important;
+        }
+    </style>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="justify-content:center !important; display: flex !important; align-content: space-around !important; align-items: center !important">
+                    <h3 class="text-uppercase">Quản lý menu</h3>
+                </div>
+                <div id="link"  style="justify-content:flex-end !important; display: flex !important; align-content: space-around !important; align-items: center !important; margin-top: 20px; margin-right: 3%;">
+                    @Html.ActionLink("Create New", "Create",new { }, htmlAttributes: new {@class = "btn btn-primary"})
+                </div>
+                <table class="table table-responsive" id="dataTables-example" style="width:100%">
+                    <tr>
+                        <th width="80%">
+                            @Html.DisplayNameFor(model => model.Name)   
+                        </th>
+                        <th>Action</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div class="btn">
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </div>
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id },htmlAttributes: new { @class ="btn btn-success"})
+                                @Html.ActionLink("Details", "Details", new { id = item.Id },htmlAttributes: new { @class ="btn btn-warning"})
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id },htmlAttributes: new { @class ="btn btn-info"})
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>

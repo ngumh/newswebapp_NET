@@ -1,0 +1,28 @@
+﻿@model List<news.Models.Post>
+
+@{
+    if (Model.Count() == 0)
+    {
+        <div style="text-align: center;">Không có bài viết nào được viết</div>
+    }
+    else
+    {
+        foreach (var i in Model)
+        {
+            <!-- Single Post -->
+            <div class="col-12 col-md-6">
+                <div class="single-blog-post style-3">
+                    <div class="post-thumb">
+                        <a href="@Url.Action("Detail", "Home", new { postId = @i.Id})"><img src="~/img/bg-img/@i.ImageURL" alt=""></a>
+                    </div>
+                    <div class="post-data">
+                        <a href="@Url.Action("Category", "Home", new { id = @i.Catagory.Name})" class="post-catagory">@i.Catagory.Name</a>
+                        <a href="@Url.Action("Detail", "Home", new { postId = @i.Id })" class="post-title">
+                            <h6>@i.Title</h6>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}

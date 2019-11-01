@@ -1,0 +1,10 @@
+﻿@model List<news.Models.Post>
+@{
+    ViewBag.Title = "Category";
+    Boolean i = false;
+}
+
+
+<div class="row">
+        @{ Html.RenderAction("liNewsByCategory"); i = true;}
+</div>

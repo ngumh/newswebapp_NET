@@ -1,0 +1,7 @@
+﻿@model List<news.Models.Post>
+@foreach (var i in Model)
+{
+    <li>
+        <a href="@Url.Action("Detail", "Home", new { postId = @i.Id})" >@i.Title</a>
+    </li>
+}

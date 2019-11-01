@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NewsWebAppModelStoreContainer" CdmEntityContainer="NewsWebAppEntities1">
+    <EntitySetMapping Name="Catagory">
+      <EntityTypeMapping TypeName="NewsWebAppModel.Catagory">
+        <MappingFragment StoreEntitySet="Catagory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="NewsWebAppModel.Messages">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Post">
+      <EntityTypeMapping TypeName="NewsWebAppModel.Post">
+        <MappingFragment StoreEntitySet="Post">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Author_Id" ColumnName="Author_Id" />
+          <ScalarProperty Name="Catagory_Id" ColumnName="Catagory_Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="IsBreakingNews" ColumnName="IsBreakingNews" />
+          <ScalarProperty Name="NumOfVisitors" ColumnName="NumOfVisitors" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subscriber">
+      <EntityTypeMapping TypeName="NewsWebAppModel.Subscriber">
+        <MappingFragment StoreEntitySet="Subscriber">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="NewsWebAppModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

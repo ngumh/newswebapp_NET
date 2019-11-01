@@ -1,0 +1,23 @@
+﻿@model List<news.Models.Post>
+@{ Random random = new Random();}
+@foreach (var i in Model)
+{
+    <!-- Single Post -->
+    <div class="col-12 col-md-6">
+        <div class="single-blog-post style-3">
+            <div class="post-thumb">
+                <a href="@Url.Action("Catagory", "Home", new { id = @i.Catagory.Name})"><img src="~/img/bg-img/@i.ImageURL" alt=""></a>
+            </div>
+            <div class="post-data">
+                <a href="@Url.Action("Category", "Home", new { id = @i.Catagory.Name})" class="post-catagory">@i.Catagory.Name</a>
+                <a href="@Url.Action("Detail", "Home", new { postId = @i.Id })" class="post-title">
+                    <h6>@i.Title</h6>
+                </a>
+                <div class="post-meta d-flex align-items-center">
+                    <a href="" class="post-like"><img src="~/img/core-img/like.png" alt=""> <span>@random.Next(1000)</span></a>
+                    <a href="" class="post-comment"><img src="~/img/core-img/chat.png" alt=""> <span>@random.Next(100)</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

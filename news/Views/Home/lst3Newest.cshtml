@@ -1,0 +1,7 @@
+﻿@model List<news.Models.Post>
+@foreach (var i in Model)
+{
+    <li>
+        @Html.ActionLink(i.Title, "Detail", "Home", new { postId = i.Id })
+    </li>
+}

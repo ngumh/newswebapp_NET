@@ -1,0 +1,19 @@
+﻿@model List<news.Models.Post>
+
+@foreach (var i in Model)
+{
+    <!-- Single Post -->
+    <div class="col-12 col-md-6">
+        <div class="single-blog-post style-3">
+            <div class="post-thumb">
+                <a href="@Url.Action("Catagory", "Home", new { id = @i.Catagory.Name})"><img src="~/img/bg-img/@i.ImageURL" alt=""></a>
+            </div>
+            <div class="post-data">
+                <a href="@Url.Action("Category", "Home", new { id = @i.Catagory.Name})" class="post-catagory">@i.Catagory.Name</a>
+                <a href="@Url.Action("Detail", "Home", new { postId = @i.Id })" class="post-title">
+                    <h6>@i.Title</h6>
+                </a>
+            </div>
+        </div>
+    </div>
+}

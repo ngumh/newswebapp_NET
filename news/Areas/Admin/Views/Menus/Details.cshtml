@@ -1,0 +1,27 @@
+﻿@model news.Models.Catagory
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h2 style="padding-top: 30px">Chi Tiết</h2>
+<hr />
+
+<div>
+    <h4>Menu</h4>
+    <hr />
+    <dl class="dl-horizontal" style="font-size: 15px">
+        <dt class="text-success">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd class="text-success">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

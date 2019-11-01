@@ -1,0 +1,18 @@
+﻿@model List<news.Models.Post>
+
+@foreach (var i in Model)
+{
+    <!-- Single Post -->
+    <div class="col-12 col-md-12">
+        <div class="single-blog-post style-3">
+            <div class="post-thumb">
+                <a href="@Url.Action("Catagory", "Post", new { id = @i.Catagory_Id})"><img src="~/img/bg-img/@i.ImageURL" alt=""></a>
+            </div>
+            <div class="post-data">
+                <a href="@Url.Action("Category", "Home", new { id = @i.Catagory_Id})" class="post-catagory">@i.Catagory.Name</a>
+                <h4 class="post-title" style="color:#007bff;">@i.Title</h4>
+            </div>
+            @Html.Raw(i.Content)
+        </div>
+    </div>
+}

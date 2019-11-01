@@ -1,0 +1,6 @@
+﻿@model List<news.Models.Catagory>
+
+@foreach (var i in Model)
+{
+    <li><a href="@Url.Action("Category", "Home", new { id = @i.Name})">@i.Name</a></li>
+}
