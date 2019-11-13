@@ -1,0 +1,116 @@
+﻿@model IEnumerable<news.Models.Post>
+@using System.Text.RegularExpressions;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+}
+@helper StripHTML(string input)
+{
+    if (!string.IsNullOrEmpty(input))
+    {
+        input = Regex.Replace(input, "<.*?>", String.Empty);
+        <span>@input</span>
+    }
+}
+
+
+<style>
+
+    .table>tbody>tr>td {
+        vertical-align: middle !important;
+    }
+    tr>th{
+        text-align: center;
+    }
+    #dataTable_filter{
+        float:right
+    }
+    #dataTable_length{
+        display:inline;
+    }
+
+</style>
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading" style="justify-content:center !important; display: flex !important; align-content: space-around !important; align-items: center !important">
+        <h2 class="text-uppercase">Tin Tức</h2>
+    </div>
+    <div id="link" style="justify-content:flex-end !important; display: flex !important; align-content: space-around !important; align-items: center !important; margin-top: 20px;margin-bottom: 20px;">
+        @Html.ActionLink("Create New", "Create", new { }, htmlAttributes: new { @class = "btn btn-primary" })
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            Tin nóng
+                        </th>
+                        <th class="col-lg-1">
+                            Tiêu đề
+                        </th>
+                        <th>
+                            Ngày tạo
+                        </th>
+                        <th class="col-lg-5">
+                            Nội dung
+                        </th>
+                        <th>
+                            Loại Tin
+                        </th>
+                        <th>
+                            Tên người viết
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr class="text-center">
+                        <td>
+                            @{
+                                if (item.IsBreakingNews == 1)
+                                {
+                                    <span><i class="fas fa-check" style="color: forestgreen; font-weight: bold"></i></span>
+                                }
+                                else
+                                {
+                                    <span><i> -- </i></span>
+                                }
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                        </td>
+                        <td>
+                            @StripHTML(item.Content.Substring(0, 450)) ...
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Catagory.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.FullName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-success" })
+                            <br />
+                            <hr />
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-warning" })
+                            <br />
+                            <hr />
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-info" })
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

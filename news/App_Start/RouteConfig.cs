@@ -17,7 +17,8 @@ namespace news
                 name: "Default",
                 url: "{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                new[] {"Controller.Home" }
+                namespaces: new[] { "news.Controllers" }
+
             );
         }
     }

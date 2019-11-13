@@ -12,7 +12,7 @@
                 <a href="@Url.Action("Category", "Home", new { id = @i.Catagory.Name})" class="post-catagory">@i.Catagory.Name</a>
                 <h4 class="post-title" style="color:#007bff;">@i.Title</h4>
             </div>
-            @i.Content
+            @Html.Raw(i.Content)
         </div>
     </div>
 }

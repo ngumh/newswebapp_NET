@@ -8,16 +8,18 @@
     <meta name="author" content="">
     <title>Admin</title>
     <!-- Bootstrap Core CSS -->
-
-    <link href="/Areas/admin/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css" />
+    <link href="~/Areas/Admin/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
-    <link href="/Areas/admin/Content/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="~/Areas/Admin/Content/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="/Areas/admin/Content/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="~/Areas/Admin/Content/dist/css/sb-admin-2.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
-    <link href="/Areas/admin/Content/vendor/morrisjs/morris.css" rel="stylesheet">
+    <!--link href="~/Areas/Admin/Content/vendor/morrisjs/morris.css" rel="stylesheet"-->
+
     <!-- Custom Fonts -->
-    <link href="/Areas/admin/Content/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Areas/Admin/Content/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -36,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Welcome</a>
+                <a class="navbar-brand" href="/admin">Welcome</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
@@ -69,10 +71,7 @@
                             <a href="@Url.Action("Index","menus") "><i class="fa fa-dashboard fa-fw"></i> Quản lý Menu</a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Index","slide") "><i class="fa fa-dashboard fa-fw"></i> Quản lý Slide</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Index","news") "><i class="fa fa-th-list fa-fw"></i> Quản lý Tin tức</a>
+                            <a href="@Url.Action("Index","posts") "><i class="fa fa-th-list fa-fw"></i> Quản lý Tin tức</a>
                         </li>
                         <li>
                             <a href="@Url.Action("Index","products") "><i class="fa fa-th-list fa-fw"></i> Quản lý Sản phẩm</a>
@@ -183,18 +182,32 @@
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
-    <script src="/Areas/admin/Content/vendor/jquery/jquery.min.js"></script>
+
+
+    <script src="~/Areas/Admin/Content/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="/Areas/admin/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="/Areas/admin/Content/vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/metisMenu/metisMenu.min.js"></script>
     <!-- Morris Charts JavaScript -->
-    <script src="/Areas/admin/Content/vendor/raphael/raphael.min.js"></script>
-    <script src="/Areas/admin/Content/vendor/morrisjs/morris.min.js"></script>
-    <script src="/Areas/admin/Content/data/morris-data.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/raphael/raphael.min.js"></script>
+    <!--script src="~/Areas/Admin/Content/vendor/morrisjs/morris.min.js"></script>
+    <script src="~/Areas/Admin/Content/data/morris-data.js"></script-->
     <!-- Custom Theme JavaScript -->
-    <script src="/Areas/admin/Content/dist/js/sb-admin-2.js"></script>
+    <script src="~/Areas/Admin/Content/dist/js/sb-admin-2.js"></script>
+    <script src="~/Areas/Admin/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script>
+
+
+
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
     @RenderSection("_Header", false);
     @RenderSection("_Footer", false);
 </body>
+
 </html>

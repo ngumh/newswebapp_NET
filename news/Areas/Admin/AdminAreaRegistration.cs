@@ -16,8 +16,8 @@ namespace news.Areas.Admin
         {
             context.MapRoute(
                 "Admin_default",
-                "{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                "admin/{controller}/{action}/{id}",
+                new { action = "Index",Controller = "Home", id = UrlParameter.Optional }
             );
         }
     }

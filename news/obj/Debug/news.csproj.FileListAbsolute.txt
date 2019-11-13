@@ -57,3 +57,5 @@ C:\Users\PC\source\repos\news\news\obj\Debug\news.csprojAssemblyReference.cache
 C:\Users\PC\source\repos\news\news\obj\Debug\news.csproj.CopyComplete
 C:\Users\PC\source\repos\news\news\obj\Debug\news.dll
 C:\Users\PC\source\repos\news\news\obj\Debug\news.pdb
+C:\Users\PC\source\repos\news\news\bin\CKFinder.dll
+C:\Users\PC\source\repos\news\news\bin\CKFinder.pdb
