@@ -1,0 +1,11 @@
+C:\Users\PC\source\repos\news\model\bin\Debug\model.dll.config
+C:\Users\PC\source\repos\news\model\bin\Debug\model.dll
+C:\Users\PC\source\repos\news\model\bin\Debug\model.pdb
+C:\Users\PC\source\repos\news\model\bin\Debug\EntityFramework.dll
+C:\Users\PC\source\repos\news\model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\PC\source\repos\news\model\bin\Debug\EntityFramework.xml
+C:\Users\PC\source\repos\news\model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\PC\source\repos\news\model\obj\Debug\model.csprojAssemblyReference.cache
+C:\Users\PC\source\repos\news\model\obj\Debug\model.csproj.CopyComplete
+C:\Users\PC\source\repos\news\model\obj\Debug\model.dll
+C:\Users\PC\source\repos\news\model\obj\Debug\model.pdb
