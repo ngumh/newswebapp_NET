@@ -52,11 +52,11 @@
                         <th class="col-lg-1">
                             Tiêu đề
                         </th>
+                        <th class="col-lg-1">
+                            Img
+                        </th>
                         <th>
                             Ngày tạo
-                        </th>
-                        <th class="col-lg-5">
-                            Nội dung
                         </th>
                         <th>
                             Loại Tin
@@ -87,10 +87,10 @@
                             @Html.DisplayFor(modelItem => item.Title)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                            <img src="~/Content/upload/img/news/@item.ImageURL" width="200" alt="Alternate Text" />
                         </td>
                         <td>
-                            @StripHTML(item.Content.Substring(0, 450)) ...
+                            @Html.DisplayFor(modelItem => item.CreatedDate)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Catagory.Name)

@@ -53,9 +53,12 @@ C:\Users\PC\source\repos\news\news\bin\System.Web.WebPages.Razor.xml
 C:\Users\PC\source\repos\news\news\bin\Newtonsoft.Json.xml
 C:\Users\PC\source\repos\news\news\bin\Antlr3.Runtime.pdb
 C:\Users\PC\source\repos\news\news\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\PC\source\repos\news\news\obj\Debug\news.csprojAssemblyReference.cache
 C:\Users\PC\source\repos\news\news\obj\Debug\news.csproj.CopyComplete
 C:\Users\PC\source\repos\news\news\obj\Debug\news.dll
 C:\Users\PC\source\repos\news\news\obj\Debug\news.pdb
 C:\Users\PC\source\repos\news\news\bin\CKFinder.dll
 C:\Users\PC\source\repos\news\news\bin\CKFinder.pdb
+C:\Users\PC\source\repos\news\news\obj\Debug\news.csprojAssemblyReference.cache
+C:\Users\PC\source\repos\news\news\bin\model.dll
+C:\Users\PC\source\repos\news\news\bin\model.pdb
+C:\Users\PC\source\repos\news\news\bin\model.dll.config

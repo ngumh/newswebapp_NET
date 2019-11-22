@@ -35,6 +35,7 @@ namespace news
                       "~/Content/_responsive.scss",
                       "~/Content/_theme_color.scss",
                       "~/Content/style.scss",
+                      "~/Content/font-awesome.min.css",
                       "~/Content/bootstrap.min.css"));
         }
     }

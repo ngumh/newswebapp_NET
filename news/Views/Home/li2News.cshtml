@@ -13,7 +13,7 @@
             <!-- Single Featured Post -->
             <div class="single-blog-post featured-post-2">
                 <div class="post-thumb">
-                    <a href="@Url.Action("Detail", "Home", new { postId = @i.Id })"><img src="~/img/bg-/@i.ImageURL" alt=""></a>
+                    <a href="@Url.Action("Detail", "Home", new { postId = @i.Id })"><img src="~/Content/upload/img/news/@i.ImageURL" alt=""></a>
                 </div>
                 <div class="post-data">
                     <a href="@Url.Action("Category", "Home", new { id = @i.Catagory.Name})" class="post-catagory">@i.Catagory.Name</a>

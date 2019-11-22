@@ -14,9 +14,12 @@ namespace news.Areas.Admin.Controllers
     {
         private NewsWebAppEntities db = new NewsWebAppEntities();
 
-        public ActionResult Index()
+        public ActionResult Index(String username, String password)
         {
-            return View();
+            var a = (from f in db.User
+                     where f.Username == username && f.PasswordHash == password
+                     select f);
+            return View(a.ToList());
         }
     }
 }

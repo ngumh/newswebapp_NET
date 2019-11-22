@@ -7,7 +7,7 @@
 <script src="~/Areas/Admin/Content/ckeditor/ckeditor.js"></script>
 <h2>Tạo Tin</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Posts", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -15,9 +15,8 @@
     <h4>Post</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
     <div class="form-group">
-        @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.Label("Meta URL", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
@@ -25,7 +24,6 @@
     </div>
 
     <div class="form-group">
-        Content
         @Html.LabelFor(model => model.ImageURL, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <input type="file" name="img" id="img" accept=".jpg,.png,.gif,.jpeg,.bmp" />

@@ -1,1 +1,5 @@
 ﻿<h1>Home</h1>
+@if (Session["UserName"] != null)
+{
+    <text>Welcome @Session["UserName"].ToString() </text>
+}
