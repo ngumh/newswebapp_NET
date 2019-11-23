@@ -133,6 +133,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\base1Controller.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChartController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenusController.cs" />
@@ -144,38 +146,42 @@
     </Compile>
     <Compile Include="Help\Functions.cs" />
     <Compile Include="Models\Catagory.cs">
-      <DependentUpon>Model10.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\counter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginMD.cs" />
     <Compile Include="Models\Messages.cs">
-      <DependentUpon>Model10.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model10.Context.cs">
+    <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model10.Context.tt</DependentUpon>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model10.cs">
+    <Compile Include="Models\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model10.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model10.Designer.cs">
+    <Compile Include="Models\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model10.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Post.cs">
-      <DependentUpon>Model10.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Subscriber.cs">
-      <DependentUpon>Model10.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Model10.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>Model10.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1401,7 +1407,50 @@
     <Content Include="Areas\Admin\Content\html\vendor\morrisjs\morris.min.js" />
     <Content Include="Areas\Admin\Content\html\vendor\raphael\raphael.js" />
     <Content Include="Areas\Admin\Content\html\vendor\raphael\raphael.min.js" />
+    <Content Include="Areas\Admin\Content\js\chart.js" />
     <Content Include="Areas\Admin\Content\js\sb-admin-2.js" />
+    <Content Include="Areas\Admin\Content\login\css\main.css" />
+    <Content Include="Areas\Admin\Content\login\css\util.css" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Areas\Admin\Content\login\fonts\Linearicons-Free-v1.0.0\icon-font.min.css" />
+    <Content Include="Areas\Admin\Content\login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.svg" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\OFL.txt" />
+    <Content Include="Areas\Admin\Content\login\images\bg-01.jpg" />
+    <Content Include="Areas\Admin\Content\login\images\icons\favicon.ico" />
+    <Content Include="Areas\Admin\Content\login\js\main.js" />
+    <Content Include="Areas\Admin\Content\login\vendor\animate\animate.css" />
+    <Content Include="Areas\Admin\Content\login\vendor\animsition\css\animsition.css" />
+    <Content Include="Areas\Admin\Content\login\vendor\animsition\css\animsition.min.css" />
+    <Content Include="Areas\Admin\Content\login\vendor\animsition\js\animsition.js" />
+    <Content Include="Areas\Admin\Content\login\vendor\animsition\js\animsition.min.js" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\js\popper.js" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="Areas\Admin\Content\login\vendor\countdowntime\countdowntime.js" />
+    <Content Include="Areas\Admin\Content\login\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Areas\Admin\Content\login\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Areas\Admin\Content\login\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="Areas\Admin\Content\login\vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="Areas\Admin\Content\login\vendor\daterangepicker\moment.js" />
+    <Content Include="Areas\Admin\Content\login\vendor\daterangepicker\moment.min.js" />
+    <Content Include="Areas\Admin\Content\login\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="Areas\Admin\Content\login\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Areas\Admin\Content\login\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="Areas\Admin\Content\login\vendor\select2\select2.css" />
+    <Content Include="Areas\Admin\Content\login\vendor\select2\select2.js" />
+    <Content Include="Areas\Admin\Content\login\vendor\select2\select2.min.css" />
+    <Content Include="Areas\Admin\Content\login\vendor\select2\select2.min.js" />
     <Content Include="Areas\Admin\Content\vendor\bootstrap-social\bootstrap-social.css" />
     <Content Include="Areas\Admin\Content\vendor\bootstrap\css\bootstrap.css" />
     <Content Include="Areas\Admin\Content\vendor\bootstrap\css\bootstrap.min.css" />
@@ -1501,15 +1550,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model10.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model10.edmx</DependentUpon>
-      <LastGenOutput>Model10.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model10.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model10.edmx</DependentUpon>
-      <LastGenOutput>Model10.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\active.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
@@ -3143,6 +3192,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\base1\" />
     <Folder Include="Content\upload\img\news\" />
   </ItemGroup>
   <ItemGroup>
@@ -3154,13 +3204,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="Models\Model10.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model10.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model10.edmx.diagram">
-      <DependentUpon>Model10.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
@@ -3295,6 +3338,93 @@
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\loginlayout.cshtml" />
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Areas\Admin\Content\login\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Areas\Admin\Content\login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.eot" />
+    <Content Include="Areas\Admin\Content\login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff" />
+    <Content Include="Areas\Admin\Content\login\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff2" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-Black.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-BlackItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-Bold.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-BoldItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-ExtraBold.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-ExtraBoldItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-ExtraLight.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-Italic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-Light.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-LightItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-Medium.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-MediumItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-Regular.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-SemiBold.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-SemiBoldItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-Thin.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\montserrat\Montserrat-ThinItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="Areas\Admin\Content\login\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Areas\Admin\Content\login\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Areas\Admin\Views\Chart\Index.cshtml" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\getSearch.cshtml" />

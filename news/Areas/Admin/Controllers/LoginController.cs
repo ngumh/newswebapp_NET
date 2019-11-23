@@ -9,7 +9,7 @@ namespace news.Areas.Admin.Controllers
 {
     public class LoginController : Controller
     {
-        NewsWebAppEntities db = new NewsWebAppEntities();
+        NewsWebAppEntities3 db = new NewsWebAppEntities3();
         // GET: Admin/Login
         [HttpGet]
         public ActionResult Index()
@@ -32,10 +32,22 @@ namespace news.Areas.Admin.Controllers
                 Session["UserID"] = user.Username.ToString();
                 Session["UserName"] = user.PasswordHash.ToString();
                 session.username = user.Username;
+                Session["CurrentUserName"] = user.FullName;
                 Session.Add(Common.User_session, session);
                 return RedirectToAction("index", "home");
             }
+            else
+            {
+                ModelState.AddModelError("", "Tên tài khoản hoặc mật khẩu không đúng");
+            }
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult logout()
+        {
+            Session[Common.User_session] = null;
+            return Redirect("/");
         }
         
     }

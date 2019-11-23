@@ -14,15 +14,15 @@ namespace news.Models
     
     public partial class Post
     {
-        public string Id { get; set; }
-        public string ImageURL { get; set; }
-        public string Title { get; set; }
         public bool BoolValue
         {
             get;
             set;
         }
 
+        public string Id { get; set; }
+        public string ImageURL { get; set; }
+        public string Title { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> Author_Id { get; set; }
         public Nullable<int> Catagory_Id { get; set; }

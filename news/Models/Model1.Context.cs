@@ -13,10 +13,10 @@ namespace news.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class NewsWebAppEntities1 : DbContext
+    public partial class NewsWebAppEntities3 : DbContext
     {
-        public NewsWebAppEntities1()
-            : base("name=NewsWebAppEntities1")
+        public NewsWebAppEntities3()
+            : base("name=NewsWebAppEntities3")
         {
         }
     
@@ -25,12 +25,12 @@ namespace news.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<author> authors { get; set; }
-        public virtual DbSet<Catagory> Catagories { get; set; }
-        public virtual DbSet<Message> Messages { get; set; }
-        public virtual DbSet<Post> Posts { get; set; }
-        public virtual DbSet<Subscriber> Subscribers { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Catagory> Catagory { get; set; }
+        public virtual DbSet<counter> counter { get; set; }
+        public virtual DbSet<Messages> Messages { get; set; }
+        public virtual DbSet<Post> Post { get; set; }
+        public virtual DbSet<Subscriber> Subscriber { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }

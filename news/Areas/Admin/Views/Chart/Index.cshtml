@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #chart_container {
+        margin-top: 50px;
+        height: 400px;
+        border: 1px solid #ddd;
+        padding: 1px;
+        border-radius: 5px;
+        background: ghostwhite;
+    }
+</style>
+
+<div class="container">
+    <div class="col-md-6" id="chart_container">
+        <canvas id="bar_chart"></canvas>
+    </div>
+</div>
+
+<script>
+    var dynamicColors = function() {
+            var r = 180;
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+            return "rgba(" + r + "," + g + "," + b + ",0.5)";
+    };
+    var data =@Html.Raw(Json.Encode(ViewBag.REP))
+    var ctx = $("#bar_chart")
+    var barchart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels:@Html.Raw(Json.Encode(ViewBag.name)),
+            datasets: [{
+                label:"Bài viết",
+                data:data,
+                backgroundColor:dynamicColors(),
+                borderColor : "#fff",
+                borderWidth : "3",
+                hoverBorderColor : "#000",
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        userCallback: function(label, index, labels) {
+                             // when the floored value is the same as the value we have a whole number
+                             if (Math.floor(label) === label) {
+                                 return label;
+                             }
+
+                         },
+                    }
+                }]
+            },
+            legends: { display: false },
+                title: {
+                display: true,
+                        text: `Thống kê tháng @DateTime.Now.Month có @ViewBag.fname bài viết`,
+                },
+                animation: {
+                    easing: 'easeInSine',
+                    duration: 2000,
+                }
+        },
+
+    })
+
+</script>

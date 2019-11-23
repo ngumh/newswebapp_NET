@@ -10,9 +10,9 @@ using news.Models;
 
 namespace news.Areas.Admin.Controllers
 {
-    public class MenusController : Controller
+    public class MenusController : base1Controller
     {
-        private NewsWebAppEntities db = new NewsWebAppEntities();
+        private NewsWebAppEntities3 db = new NewsWebAppEntities3();
 
         // GET: Admin/Menus
         public ActionResult Index()

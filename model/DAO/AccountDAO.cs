@@ -16,6 +16,7 @@ namespace model.DAO
 
         public bool log(String user, String pass)
         {
+            
             var result = db.User.Count(x => x.Username == user && x.PasswordHash == pass);
             if(result == 1)
             {

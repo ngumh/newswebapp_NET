@@ -9,7 +9,7 @@ namespace news.Controllers
 {
     public class HomeController : Controller
     {
-        NewsWebAppEntities _db = new NewsWebAppEntities();
+        NewsWebAppEntities3 _db = new NewsWebAppEntities3();
 
         public ActionResult Index()
         {
