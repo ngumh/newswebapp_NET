@@ -14,12 +14,10 @@ namespace news.Models
     
     public partial class Post
     {
-        public bool BoolValue
+        public Boolean BoolValue
         {
-            get;
-            set;
+            get; set;
         }
-
         public string Id { get; set; }
         public string ImageURL { get; set; }
         public string Title { get; set; }

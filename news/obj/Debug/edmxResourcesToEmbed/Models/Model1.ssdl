@@ -11,7 +11,7 @@
     <Key>
       <PropertyRef Name="slid" />
     </Key>
-    <Property Name="slid" Type="int" Nullable="false" />
+    <Property Name="slid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ipaddress" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="createddate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
   </EntityType>
@@ -66,6 +66,12 @@
     <Property Name="FullName" Type="nvarchar" MaxLength="200" />
     <Property Name="Username" Type="varchar" MaxLength="50" />
     <Property Name="PasswordHash" Type="varchar" MaxLength="200" />
+    <Property Name="Email" Type="varchar" MaxLength="200" />
+    <Property Name="Address" Type="varchar" MaxLength="300" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="description" Type="text" />
+    <Property Name="imgurl" Type="text" />
+    <Property Name="wallpaperurl" Type="text" />
   </EntityType>
   <Association Name="FK_Post_Category">
     <End Role="Catagory" Type="Self.Catagory" Multiplicity="0..1" />

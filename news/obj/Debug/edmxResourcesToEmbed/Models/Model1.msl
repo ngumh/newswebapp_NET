@@ -68,6 +68,12 @@
     <EntitySetMapping Name="User">
       <EntityTypeMapping TypeName="NewsWebAppModel.User">
         <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="wallpaperurl" ColumnName="wallpaperurl" />
+          <ScalarProperty Name="imgurl" ColumnName="imgurl" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="Username" ColumnName="Username" />

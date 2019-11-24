@@ -134,6 +134,8 @@ namespace news.Areas.Admin.Controllers
                     temp.Title = post.Title;
                     temp.Content = post.Content;
                     temp.CreatedDate = DateTime.Now;
+                    temp.Author_Id = post.Author_Id;
+                    temp.Catagory_Id = post.Catagory_Id;
                     temp.Id = post.Id;
                     if (post.BoolValue == true)
                     {

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NewsWebAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="NewsWebAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Catagory">
           <Key>
             <PropertyRef Name="Id" />
@@ -16,7 +16,7 @@
           <Key>
             <PropertyRef Name="slid" />
           </Key>
-          <Property Name="slid" Type="int" Nullable="false" />
+          <Property Name="slid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ipaddress" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="createddate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
@@ -71,6 +71,12 @@
           <Property Name="FullName" Type="nvarchar" MaxLength="200" />
           <Property Name="Username" Type="varchar" MaxLength="50" />
           <Property Name="PasswordHash" Type="varchar" MaxLength="200" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="Address" Type="varchar" MaxLength="300" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="text" />
+          <Property Name="imgurl" Type="text" />
+          <Property Name="wallpaperurl" Type="text" />
         </EntityType>
         <Association Name="FK_Post_Category">
           <End Role="Catagory" Type="Self.Catagory" Multiplicity="0..1" />
@@ -113,8 +119,7 @@
             <End Role="Post" EntitySet="Post" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NewsWebAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -188,6 +193,12 @@
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Post" Relationship="Self.FK_Post_User" FromRole="User" ToRole="Post" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="imgurl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="wallpaperurl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Post_Category">
           <End Role="Catagory" Type="Self.Catagory" Multiplicity="0..1" />
@@ -303,6 +314,12 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="NewsWebAppModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="wallpaperurl" ColumnName="wallpaperurl" />
+                <ScalarProperty Name="imgurl" ColumnName="imgurl" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Username" ColumnName="Username" />

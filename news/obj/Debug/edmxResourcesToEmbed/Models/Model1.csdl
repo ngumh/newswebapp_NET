@@ -70,6 +70,12 @@
     <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="PasswordHash" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Post" Relationship="Self.FK_Post_User" FromRole="User" ToRole="Post" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="imgurl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="wallpaperurl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_Post_Category">
     <End Role="Catagory" Type="Self.Catagory" Multiplicity="0..1" />

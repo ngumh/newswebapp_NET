@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Thống Kê";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,11 +14,8 @@
         background: ghostwhite;
     }
 </style>
-
-<div class="container">
-    <div class="col-md-6" id="chart_container">
-        <canvas id="bar_chart"></canvas>
-    </div>
+<div class="col-md-6" id="chart_container">
+    <canvas id="bar_chart"></canvas>
 </div>
 
 <script>
@@ -40,7 +37,6 @@
                 backgroundColor:dynamicColors(),
                 borderColor : "#fff",
                 borderWidth : "3",
-                hoverBorderColor : "#000",
             }]
         },
         options: {
@@ -63,10 +59,6 @@
                 title: {
                 display: true,
                         text: `Thống kê tháng @DateTime.Now.Month có @ViewBag.fname bài viết`,
-                },
-                animation: {
-                    easing: 'easeInSine',
-                    duration: 2000,
                 }
         },
 
