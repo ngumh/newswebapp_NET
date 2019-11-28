@@ -1,0 +1,119 @@
+﻿@model news.Models.User
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var username = Model.Username;
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm(Html.BeginForm("Edit", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" })))
+{
+    
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title">Profile</h5>
+            </div>
+
+            <div class="card-body">
+                <form>
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+                    <div class="row">
+                        <div class="col-md-5 pr-1">
+                            <div class="form-group">
+                                <label>Company</label>
+                                <input type="text" class="form-control" disabled="" placeholder="Company" value="ChangChang Inc.">
+                            </div>
+                        </div>
+                        <div class="col-md-3 px-1">
+                            <div class="form-group">
+                                <label>Username</label>
+                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="col-md-4 pl-1">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 pl-1">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Address</label>
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>City</label>
+                                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+                                    <label>About Me</label>
+                                </div>
+                                <div>
+                                    @Html.EditorFor(model => model.description, new { @id = "content1", htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+                                    <label>Avatar</label>
+                                </div>
+                                <div>
+                                    <input type="file" name="img" id="img" accept=".jpg,.png,.gif,.jpeg,.bmp" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div>
+                                    <label>Wallpaper</label>
+                                </div>
+                                <div>
+                                    <input type="file" name="wallpaper" id="img" accept=".jpg,.png,.gif,.jpeg,.bmp" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-outline-primary" />
+                        </div>
+                    </div>>
+                </form>
+            </div>
+        </div>
+    </div>
+
+}
+<div>
+    @Html.ActionLink("Back to Profile", "Index", new { id= username}, new { @class = "btn btn-outline-primary"})
+</div>

@@ -5,12 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Lifestyle Magazine</title>
     @Styles.Render("~/Content/css")
-    <link rel="stylesheet" href="~/Content/style.scss" />
-    <link rel="stylesheet" href="~/Content/_fonts.scss" />
-    <link rel="stylesheet" href="~/Content/_mixin.scss" />
-    <link rel="stylesheet" href="~/Content/_responsive.scss" />
-    <link rel="stylesheet" href="~/Content/_theme_color.scss" />
-
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <style>
 
@@ -18,7 +12,7 @@
             height: 100%;
         }
     </style>
-    
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -76,7 +70,7 @@
                                     <li class="active"><a asp-action="Index" asp-controller="Home" href="@Url.Action("")">Home</a></li>
                                     <li><a href="@Url.Action("Category", "Home", new { id = "Breakingnews"})">Tin Nóng</a></li>
                                     @{ Html.RenderAction("getCatagories");}
-                                    <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                                    <li><a href="/contact">Contact</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->

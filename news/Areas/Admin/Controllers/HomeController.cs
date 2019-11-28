@@ -18,5 +18,6 @@ namespace news.Areas.Admin.Controllers
         {
             return View();
         }
+
     }
 }

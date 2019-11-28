@@ -21,7 +21,6 @@ namespace news.Areas.Admin.Controllers
             var numb = (from f in db.Post
                         where f.CreatedDate.Value.Month == thismonth
                         select f).Count();
-
             foreach (var item in name)
             {
                 repa.Add((from f in db.Post

@@ -22,6 +22,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="200" />
     <Property Name="Email" Type="varchar" MaxLength="200" />
+    <Property Name="Phone" Type="varchar" MaxLength="15" />
     <Property Name="Subject" Type="nvarchar" MaxLength="300" />
     <Property Name="Message" Type="nvarchar" MaxLength="2000" />
     <Property Name="SentDate" Type="datetime" />

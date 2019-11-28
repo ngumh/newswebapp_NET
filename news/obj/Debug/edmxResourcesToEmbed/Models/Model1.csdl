@@ -26,6 +26,7 @@
     <Property Name="Subject" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Name="Message" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
     <Property Name="SentDate" Type="DateTime" Precision="3" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Post">
     <Key>

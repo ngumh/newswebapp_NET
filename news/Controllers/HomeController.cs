@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -7,6 +8,7 @@ using news.Models;
 
 namespace news.Controllers
 {
+    [HandleError]
     public class HomeController : Controller
     {
         NewsWebAppEntities3 _db = new NewsWebAppEntities3();
@@ -14,6 +16,17 @@ namespace news.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Subcribe([Bind(Include = "Name,Email")] Subscriber subcribe)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Subscriber.Add(subcribe);
+                _db.SaveChanges();
+            }
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
         public ActionResult Search(string key)
@@ -137,9 +150,22 @@ namespace news.Controllers
         {
             return View();
         }
+
+        public Post getById(string id)
+        {
+            return _db.Post.Where(x => x.Id == id).FirstOrDefault();
+
+        }
+
         public ActionResult Detail(string postId)
         {
-            
+            var v = (from t in _db.Post
+                     where t.Id == postId
+                     select t.NumOfVisitors).First();
+                Post temp = getById(postId);
+                temp.NumOfVisitors = v + 1;
+                _db.Entry(temp).State = EntityState.Modified;
+                _db.SaveChanges();
             return View();
         }
     }

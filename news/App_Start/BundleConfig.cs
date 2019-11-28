@@ -29,14 +29,9 @@ namespace news
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/style.css",
-                      "~/Content/style.scss",
-                      "~/Content/_fonts.scss",
-                      "~/Content/_responsive.scss",
-                      "~/Content/_theme_color.scss",
-                      "~/Content/style.scss",
-                      "~/Content/font-awesome.min.css",
-                      "~/Content/bootstrap.min.css"));
+                      "~/Content/style.css.map",
+                      "~/Content/style.css"
+));
         }
     }
 }

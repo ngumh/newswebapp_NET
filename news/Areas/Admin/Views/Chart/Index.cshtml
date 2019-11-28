@@ -3,7 +3,6 @@
     ViewBag.Title = "Thống Kê";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
 <style>
     #chart_container {
         margin-top: 50px;
@@ -14,18 +13,18 @@
         background: ghostwhite;
     }
 </style>
-<div class="col-md-6" id="chart_container">
+<div class="col-md-12" id="chart_container">
     <canvas id="bar_chart"></canvas>
 </div>
 
-<script>
+<script>    
     var dynamicColors = function() {
             var r = 180;
             var g = Math.floor(Math.random() * 255);
             var b = Math.floor(Math.random() * 255);
             return "rgba(" + r + "," + g + "," + b + ",0.5)";
     };
-    var data =@Html.Raw(Json.Encode(ViewBag.REP))
+    var data =@Html.Raw(Json.Encode(ViewBag.REP))   
     var ctx = $("#bar_chart")
     var barchart = new Chart(ctx, {
         type: 'horizontalBar',
