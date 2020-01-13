@@ -25,7 +25,8 @@ namespace news.Controllers
                 _db.Messages.Add(mess);
                 _db.SaveChanges();
             }
-            return Redirect(Request.UrlReferrer.ToString());
+            Response.Cookies.Add(new HttpCookie("FlashMessage", "Data processed") { Path = "/" });
+            return Redirect("/");
         }
     }
 }

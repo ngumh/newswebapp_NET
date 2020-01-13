@@ -49,6 +49,7 @@
     <EntitySetMapping Name="Subscriber">
       <EntityTypeMapping TypeName="NewsWebAppModel.Subscriber">
         <MappingFragment StoreEntitySet="Subscriber">
+          <ScalarProperty Name="createdate" ColumnName="createdate" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />

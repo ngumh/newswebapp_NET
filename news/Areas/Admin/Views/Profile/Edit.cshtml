@@ -5,9 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     var username = Model.Username;
 }
-
-<h2>Edit</h2>
-
 @using (Html.BeginForm(Html.BeginForm("Edit", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" })))
 {
     

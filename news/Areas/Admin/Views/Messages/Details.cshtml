@@ -1,0 +1,123 @@
+﻿@model news.Models.Messages
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+
+    <div class="col-lg-12">
+
+        <div class="card">
+            <div class="card-header text-center text-uppercase">
+                <h2>Messages</h2>
+
+            </div>
+            <div class="row">
+
+                <div class="col-xlg-2 col-lg-2 col-md-2">
+
+                    <div class="card-body inbox-panel">
+                        <a href="app-compose.html" class="btn btn-danger m-b-20 p-10 btn-block waves-effect waves-light">Compose</a>
+
+                        <ul class="list-group list-group-full">
+
+                            <li class="list-group-item active"> <a href="javascript:void(0)"><i class="mdi mdi-gmail"></i> Inbox </a><span class="badge badge-success ml-auto">6</span></li>
+
+                            <li class="list-group-item">
+
+                                <a href="javascript:void(0)"> <i class="mdi mdi-delete"></i> Trash </a>
+
+                            </li>
+
+                        </ul>
+
+                        <h3 class="card-title m-t-40">Labels</h3>
+
+                        <div class="list-group b-0 mail-list"> <a href="#" class="list-group-item"><span class="fa fa-circle text-info m-r-10"></span>Work</a> <a href="#" class="list-group-item"><span class="fa fa-circle text-warning m-r-10"></span>Family</a> <a href="#" class="list-group-item"><span class="fa fa-circle text-purple m-r-10"></span>Private</a> <a href="#" class="list-group-item"><span class="fa fa-circle text-danger m-r-10"></span>Friends</a> <a href="#" class="list-group-item"><span class="fa fa-circle text-success m-r-10"></span>Corporate</a> </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-xlg-10 col-lg-10 col-md-10">
+
+                    <div class="card-body p-t-0">
+                        <div class="card b-all shadow-none">
+
+                            <div class="inbox-center table-responsive">
+
+                                <table class="table table-hover no-wrap">
+
+                                    <tbody>
+                                        <div style="margin-top: 15px" class="card-body p-t-0">
+
+                                            <div class="card b-all shadow-none">
+
+                                                <div class="card-body">
+
+                                                    <h3 class="card-title m-b-0">Title: "@Html.DisplayFor(model => model.Subject)"</h3>
+
+                                                </div>
+
+                                                <div>
+
+                                                    <hr class="m-t-0">
+
+                                                </div>
+
+                                                <div class="card-body">
+
+                                                    <div class="d-flex m-b-40 float-right">
+
+                                                        <div class="p-l-10">
+
+                                                            <h4 class="m-b-0">@Html.DisplayFor(model => model.Name)</h4>
+
+                                                            <small class="text-muted">From: @Html.DisplayFor(model => model.Email)</small>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="card-body border" style="margin-left: 10px; margin-right:10px; ">
+                                                    <p>
+                                                        @Html.DisplayFor(model => model.Message)
+                                                    </p>
+                                                </div>
+                                                <div>
+
+                                                    <hr class="m-t-0">
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

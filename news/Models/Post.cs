@@ -17,6 +17,7 @@ namespace news.Models
 
         public Boolean BoolValue { get; set; }
 
+        public string subId { get; set; }
         public string Id { get; set; }
         public string ImageURL { get; set; }
         public string Title { get; set; }

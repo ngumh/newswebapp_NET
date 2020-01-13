@@ -23,6 +23,7 @@ namespace news.Controllers
         {
             if (ModelState.IsValid)
             {
+                subcribe.createdate = System.DateTime.Now;
                 _db.Subscriber.Add(subcribe);
                 _db.SaveChanges();
             }
@@ -137,11 +138,11 @@ namespace news.Controllers
                 return PartialView(v.ToList());
             }
         }
-        public ActionResult getDetail(string postId)
+        public ActionResult getDetail(string id)
         {
-            ViewBag.postId = postId;
+            ViewBag.postId = id;
             var v = from t in _db.Post
-                    where t.Id == postId
+                    where t.Id == id
                     orderby t.CreatedDate descending
                     select t;
             return PartialView(v.ToList());
@@ -157,16 +158,17 @@ namespace news.Controllers
 
         }
 
-        public ActionResult Detail(string postId)
+        public ActionResult Detail(string id)
         {
             var v = (from t in _db.Post
-                     where t.Id == postId
+                     where t.Id == id
                      select t.NumOfVisitors).First();
-                Post temp = getById(postId);
+                Post temp = getById(id);
                 temp.NumOfVisitors = v + 1;
                 _db.Entry(temp).State = EntityState.Modified;
                 _db.SaveChanges();
-            return View();
+            ViewBag.name = id;
+            return View(v);
         }
     }
 }

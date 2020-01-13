@@ -62,3 +62,16 @@ C:\Users\PC\source\repos\news\news\obj\Debug\news.csprojAssemblyReference.cache
 C:\Users\PC\source\repos\news\news\bin\model.dll
 C:\Users\PC\source\repos\news\news\bin\model.pdb
 C:\Users\PC\source\repos\news\news\bin\model.dll.config
+C:\Users\PC\source\repos\news\news\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\PC\source\repos\news\news\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\PC\source\repos\news\news\bin\Microsoft.Owin.dll
+C:\Users\PC\source\repos\news\news\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\PC\source\repos\news\news\bin\Microsoft.Owin.Security.dll
+C:\Users\PC\source\repos\news\news\bin\Owin.dll
+C:\Users\PC\source\repos\news\news\bin\Microsoft.AspNet.SignalR.Core.pdb
+C:\Users\PC\source\repos\news\news\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\PC\source\repos\news\news\bin\Microsoft.AspNet.SignalR.SystemWeb.pdb
+C:\Users\PC\source\repos\news\news\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\PC\source\repos\news\news\bin\Microsoft.Owin.xml
+C:\Users\PC\source\repos\news\news\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\PC\source\repos\news\news\bin\Microsoft.Owin.Security.xml

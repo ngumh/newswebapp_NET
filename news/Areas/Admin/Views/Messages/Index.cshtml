@@ -1,0 +1,115 @@
+﻿@model IEnumerable<news.Models.Messages>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+
+    <div class="col-lg-12">
+
+        <div class="card">
+            <div class="card-header text-center text-uppercase">
+                <h2>Messages</h2>
+
+            </div>
+            <div class="row">
+
+                <div class="col-xlg-2 col-lg-2 col-md-2">
+
+                    <div class="card-body inbox-panel">
+                        <a href="app-compose.html" class="btn btn-danger m-b-20 p-10 btn-block waves-effect waves-light">Compose</a>
+
+                        <ul class="list-group list-group-full">
+
+                            <li class="list-group-item active"> <a href="javascript:void(0)"><i class="mdi mdi-gmail"></i> Inbox </a><span class="badge badge-success ml-auto">6</span></li>
+
+                            <li class="list-group-item">
+
+                                <a href="javascript:void(0)"> <i class="mdi mdi-delete"></i> Trash </a>
+
+                            </li>
+
+                        </ul>
+
+                        <h3 class="card-title m-t-40">Labels</h3>
+
+                        <div class="list-group b-0 mail-list"> <a href="#" class="list-group-item"><span class="fa fa-circle text-info m-r-10"></span>Work</a> <a href="#" class="list-group-item"><span class="fa fa-circle text-warning m-r-10"></span>Family</a> <a href="#" class="list-group-item"><span class="fa fa-circle text-purple m-r-10"></span>Private</a> <a href="#" class="list-group-item"><span class="fa fa-circle text-danger m-r-10"></span>Friends</a> <a href="#" class="list-group-item"><span class="fa fa-circle text-success m-r-10"></span>Corporate</a> </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-xlg-10 col-lg-10 col-md-10">
+
+                    <div class="card-body p-t-0">
+                        <div class="card b-all shadow-none">
+
+                            <div class="inbox-center table-responsive">
+
+                                <table class="table table-hover no-wrap">
+                                    <tbody>
+                                        @{
+                                            if (@Model.Count() > 0)
+                                            {
+                                                foreach (var item in Model)
+                                                {
+                                                    <tr class="unread">
+                                                        <td>
+
+                                                            <div class="checkbox" style="margin-top:5px; width: 10px;">
+
+                                                                <input type="checkbox" id="checkbox0" value="check">
+
+                                                                <label for="checkbox0"></label>
+
+                                                            </div>
+
+                                                        </td>
+                                                        <td style="width:40px" class="hidden-xs-down"><i class="fa fa-star-o"></i></td>
+                                                        <td class="hidden-xs-down">
+                                                            @Html.DisplayFor(modelItem => item.Name)
+                                                        </td>
+                                                        <td class="max-texts">
+                                                            <a href="@Url.Action("details", "messages", new { id = item.Id })">
+                                                                <span class="label label-info m-r-10">Work</span>
+                                                                @item.Message.ToString().Substring(0, (item.Message.Length > 30) ? 10 : item.Message.Length)...
+                                                            </a>
+                                                        </td>
+                                                        <td class="hidden-xs-down"><i class="fa fa-paperclip"></i></td>
+                                                        <td class="text-right"> 12:30 PM </td>
+                                                        <td>
+                                                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                                        </td>
+                                                    </tr>
+                                                }
+
+
+                                            }
+                                            else
+                                            {
+                                                <p class="text-center">Không có tin nhắn...</p>
+                                            }
+                                        }
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

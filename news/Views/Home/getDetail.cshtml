@@ -5,13 +5,13 @@
     <!-- Single Post -->
     <div class="col-12 col-md-12">
         <div class="single-blog-post style-3">
-            <div class="post-thumb">
-                <a href="@Url.Action("Catagory", "Post", new { id = @i.Catagory.Name})"><img src="~/Content/upload/img/news/@i.ImageURL" alt=""></a>
-            </div>
+
             <div class="post-data">
                 <a href="@Url.Action("Category", "Home", new { id = @i.Catagory.Name})" class="post-catagory">@i.Catagory.Name</a>
                 <h4 class="post-title" style="color:#007bff;">@i.Title</h4>
+                <span class="time pull-right">@i.CreatedDate</span>
             </div>
+            <br />
             @Html.Raw(i.Content)
         </div>
     </div>

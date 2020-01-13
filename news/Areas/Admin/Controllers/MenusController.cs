@@ -20,20 +20,7 @@ namespace news.Areas.Admin.Controllers
             return View(db.Catagory.ToList());
         }
 
-        // GET: Admin/Menus/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Catagory catagory = db.Catagory.Find(id);
-            if (catagory == null)
-            {
-                return HttpNotFound();
-            }
-            return View(catagory);
-        }
+        
 
         // GET: Admin/Menus/Create
         public ActionResult Create()
