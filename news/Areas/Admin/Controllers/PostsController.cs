@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -13,9 +13,9 @@ using System.IO;
 
 namespace news.Areas.Admin.Controllers
 {
-    public class PostsController : Controller
+    public class PostsController : base1Controller
     {
-        private NewsWebAppEntities db = new NewsWebAppEntities();
+        private NewsWebAppEntities3 db = new NewsWebAppEntities3();
 
         // GET: Admin/Posts
         public ActionResult Index()
@@ -134,6 +134,8 @@ namespace news.Areas.Admin.Controllers
                     temp.Title = post.Title;
                     temp.Content = post.Content;
                     temp.CreatedDate = DateTime.Now;
+                    temp.Author_Id = post.Author_Id;
+                    temp.Catagory_Id = post.Catagory_Id;
                     temp.Id = post.Id;
                     if (post.BoolValue == true)
                     {

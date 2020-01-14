@@ -24,6 +24,12 @@ namespace news.Models
         public string FullName { get; set; }
         public string Username { get; set; }
         public string PasswordHash { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string description { get; set; }
+        public string imgurl { get; set; }
+        public string wallpaperurl { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Post> Post { get; set; }

@@ -14,8 +14,8 @@ namespace news.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
-            context.MapRoute("login1", "{type}",
-          new { controller = "login1", action = "logout" },
+            context.MapRoute("login", "{type}",
+          new { controller = "login", action = "logout" },
           new RouteValueDictionary
           {
                 { "type", "logout" }

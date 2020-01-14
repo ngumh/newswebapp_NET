@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "Profile || " + Session["CurrentUserName"];
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@foreach (var person in ViewBag.user)
+{
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-4 col-xlg-3 col-md-5">
+
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <center class="m-t-30">
+                            @if (@person.imgurl != null)
+                            {
+                                <img style="width: 124px;height: 124px; overflow: hidden;border:solid gray;border-radius: 50%;margin-bottom: 15px;" class="avatar border-gray" src="~/Content/upload/img/profile/personal/@person.imgurl" alt="...">
+                            }
+
+                        <h4 class="card-title m-t-10">@person.FullName</h4>
+
+                        <h6 class="card-subtitle">@@@person.Username</h6>
+
+                            
+                        <q>
+                            <i>@person.description</i>
+                        </q>
+
+                        </center>
+
+                    </div>
+
+                    <div>
+
+                        <hr>
+                    </div>
+
+                    <div class="card-body">
+                        <small class="text-muted">Email address </small>
+
+                        <h6>@person.Email</h6> <small class="text-muted p-t-30 db">Phone</small>
+                        <small class="text-muted p-t-30 db">Address</small>
+
+                        <h6>@person.Address, @person.City</h6>
+                        
+                        <div class="map-box">
+                            
+                            <iframe id="gmap_canvas" width="100%" height="150" style="border:0" allowfullscreen
+                                    src="https://maps.google.com/maps?q=@Server.UrlDecode(person.Address + "," + person.City)&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                            </iframe>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="title">Profile</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-5 pr-1">
+                                    <div class="form-group">
+                                        <label>Company</label>
+                                        <input type="text" class="form-control" disabled="" placeholder="Company" value="ChangChang Inc.">
+                                    </div>
+                                </div>
+                                <div class="col-md-3 px-1">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input type="text" class="form-control" disabled="" placeholder="Username" value="@person.Username">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 pl-1">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" disabled="" placeholder="@person.Email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label> Full Name</label>
+                                        <input type="text" class="form-control" disabled="" placeholder="Last Name" value="@person.FullName">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        <input type="text" class="form-control" disabled="" placeholder="Home Address" value="@person.Address">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 pr-1">
+                                    <div class="form-group">
+                                        <label>City</label>
+                                        <input type="text" class="form-control" disabled="" placeholder="City" value="@person.City">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>About Me</label>
+                                        <textarea rows="4" cols="80" class="form-control" disabled="" placeholder="Here can be your description">@person.description</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.ActionLink("Edit Profile", "Edit", new { id = Session["IdUser"] }, new { @class = "btn btn-outline-primary" })
+
+}
+
+

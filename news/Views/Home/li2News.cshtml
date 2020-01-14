@@ -13,12 +13,12 @@
             <!-- Single Featured Post -->
             <div class="single-blog-post featured-post-2">
                 <div class="post-thumb">
-                    <a href="@Url.Action("Detail", "Home", new { postId = @i.Id })"><img src="~/Content/upload/img/news/@i.ImageURL" alt=""></a>
+                    <a href="@Url.Action("Detail", "Home", new { id = @i.Id })"><img style="width:100%" src="~/Content/upload/img/news/@i.ImageURL" alt=""></a>
                 </div>
                 <div class="post-data">
                     <a href="@Url.Action("Category", "Home", new { id = @i.Catagory.Name})" class="post-catagory">@i.Catagory.Name</a>
                     <div class="post-meta">
-                        <a href="@Url.Action("Detail", "Home", new { postId = @i.Id })" class="post-title">
+                        <a href="@Url.Action("Detail", "Home", new { id = @i.Id })" class="post-title">
                             <h6>@i.Title</h6>
                         </a>
                         <!-- Post Like & Post Comment -->

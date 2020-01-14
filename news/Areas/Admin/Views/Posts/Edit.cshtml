@@ -61,17 +61,19 @@
         <div class="form-group">
             @Html.Label("Nội dung", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Content, new { @id = "content", htmlAttributes = new { @class = "form-control", @rows = 5 } })
+                @Html.TextAreaFor(model => model.Content, new { @id = "content1", htmlAttributes = new { @class = "form-control", @rows = 5 } })
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
             </div>
         </div>
         <script>
-            CKEDITOR.replace("content");
+            CKEDITOR.replace("content1");
         </script>
         <div class="form-group">
-            @Html.LabelFor(model => model.IsBreakingNews, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.LabelFor(model => model.IsBreakingNews, htmlAttributes: new { @class = "control-label  col-md-2" })
+
             <div class="col-md-10">
-                @Html.CheckBoxFor(model => model.BoolValue, htmlAttributes: new { @class = "checkbox ", @style = "width: 30px; height: 30px; border-color: #9575cd" })
+                @Html.CheckBoxFor(model => model.BoolValue, htmlAttributes: new { @class = "checkbox ", @style = "position: relative ;left : 0;opacity: 1;width: 30px; height: 30px; border-color: #9575cd" })
                 @Html.ValidationMessageFor(model => model.IsBreakingNews, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -79,7 +81,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-outline-danger" />
             </div>
         </div>
     </div>

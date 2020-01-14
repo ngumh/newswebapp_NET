@@ -20,5 +20,6 @@ namespace news.Models
         public string Subject { get; set; }
         public string Message { get; set; }
         public Nullable<System.DateTime> SentDate { get; set; }
+        public string Phone { get; set; }
     }
 }

@@ -10,9 +10,9 @@ using news.Models;
 
 namespace news.Areas.Admin.Controllers
 {
-    public class MenusController : Controller
+    public class MenusController : base1Controller
     {
-        private NewsWebAppEntities db = new NewsWebAppEntities();
+        private NewsWebAppEntities3 db = new NewsWebAppEntities3();
 
         // GET: Admin/Menus
         public ActionResult Index()
@@ -20,20 +20,7 @@ namespace news.Areas.Admin.Controllers
             return View(db.Catagory.ToList());
         }
 
-        // GET: Admin/Menus/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Catagory catagory = db.Catagory.Find(id);
-            if (catagory == null)
-            {
-                return HttpNotFound();
-            }
-            return View(catagory);
-        }
+        
 
         // GET: Admin/Menus/Create
         public ActionResult Create()

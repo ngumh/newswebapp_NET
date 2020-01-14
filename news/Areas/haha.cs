@@ -12,7 +12,7 @@ namespace news.Areas
 {
     public class haha : Controller
     {
-        private NewsWebAppEntities db = new NewsWebAppEntities();
+        private NewsWebAppEntities3 db = new NewsWebAppEntities3();
 
         // GET: haha
         public ActionResult Index()

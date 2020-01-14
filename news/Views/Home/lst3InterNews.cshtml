@@ -2,6 +2,6 @@
 @foreach (var i in Model)
 {
     <li>
-        <a href="@Url.Action("Detail", "Home", new { postId = @i.Id})" >@i.Title</a>
+        <a href="@Url.Action("Detail", "Home", new { id = @i.Id})" >@i.Title</a>
     </li>
 }

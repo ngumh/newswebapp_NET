@@ -4,20 +4,21 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NewsWebAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="author">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" />
-        </EntityType>
+    <Schema Namespace="NewsWebAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Catagory">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="counter">
+          <Key>
+            <PropertyRef Name="slid" />
+          </Key>
+          <Property Name="slid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ipaddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="createddate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="Messages">
           <Key>
@@ -26,6 +27,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="200" />
           <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="Phone" Type="varchar" MaxLength="15" />
           <Property Name="Subject" Type="nvarchar" MaxLength="300" />
           <Property Name="Message" Type="nvarchar" MaxLength="2000" />
           <Property Name="SentDate" Type="datetime" />
@@ -49,6 +51,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="createdate" Type="datetime" />
           <Property Name="Name" Type="nvarchar" MaxLength="200" />
           <Property Name="Email" Type="varchar" MaxLength="200" />
         </EntityType>
@@ -70,6 +73,12 @@
           <Property Name="FullName" Type="nvarchar" MaxLength="200" />
           <Property Name="Username" Type="varchar" MaxLength="50" />
           <Property Name="PasswordHash" Type="varchar" MaxLength="200" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="Address" Type="varchar" MaxLength="300" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="text" />
+          <Property Name="imgurl" Type="text" />
+          <Property Name="wallpaperurl" Type="text" />
         </EntityType>
         <Association Name="FK_Post_Category">
           <End Role="Catagory" Type="Self.Catagory" Multiplicity="0..1" />
@@ -83,9 +92,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Post_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="Author_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="NewsWebAppModelStoreContainer">
-          <EntitySet Name="author" EntityType="Self.author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Catagory" EntityType="Self.Catagory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="counter" EntityType="Self.counter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subscriber" EntityType="Self.Subscriber" Schema="dbo" store:Type="Tables" />
@@ -95,28 +116,32 @@
             <End Role="Catagory" EntitySet="Catagory" />
             <End Role="Post" EntitySet="Post" />
           </AssociationSet>
+          <AssociationSet Name="FK_Post_User" Association="Self.FK_Post_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NewsWebAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="author">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Catagory">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Posts" Relationship="Self.FK_Post_Category" FromRole="Catagory" ToRole="Post" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_Post_Category" FromRole="Catagory" ToRole="Post" />
         </EntityType>
-        <EntityType Name="Message">
+        <EntityType Name="counter">
+          <Key>
+            <PropertyRef Name="slid" />
+          </Key>
+          <Property Name="slid" Type="Int32" Nullable="false" />
+          <Property Name="ipaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="createddate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Messages">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -124,8 +149,9 @@
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Subject" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Message1" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
           <Property Name="SentDate" Type="DateTime" Precision="3" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -135,12 +161,13 @@
           <Property Name="ImageURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="Author_Id" Type="Int32" Nullable="false" />
+          <Property Name="Author_Id" Type="Int32" />
           <Property Name="Catagory_Id" Type="Int32" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsBreakingNews" Type="Int32" />
           <Property Name="NumOfVisitors" Type="Int32" />
           <NavigationProperty Name="Catagory" Relationship="Self.FK_Post_Category" FromRole="Post" ToRole="Catagory" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Post_User" FromRole="Post" ToRole="User" />
         </EntityType>
         <EntityType Name="Subscriber">
           <Key>
@@ -149,8 +176,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="createdate" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="sysdiagram">
+        <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
@@ -168,6 +196,13 @@
           <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_Post_User" FromRole="User" ToRole="Post" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="imgurl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="wallpaperurl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Post_Category">
           <End Role="Catagory" Type="Self.Catagory" Multiplicity="0..1" />
@@ -181,17 +216,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="NewsWebAppEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="authors" EntityType="Self.author" />
-          <EntitySet Name="Catagories" EntityType="Self.Catagory" />
-          <EntitySet Name="Messages" EntityType="Self.Message" />
-          <EntitySet Name="Posts" EntityType="Self.Post" />
-          <EntitySet Name="Subscribers" EntityType="Self.Subscriber" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="Users" EntityType="Self.User" />
+        <Association Name="FK_Post_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="Author_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NewsWebAppEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Catagory" EntityType="Self.Catagory" />
+          <EntitySet Name="counter" EntityType="Self.counter" />
+          <EntitySet Name="Messages" EntityType="Self.Messages" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="Subscriber" EntityType="Self.Subscriber" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="User" EntityType="Self.User" />
           <AssociationSet Name="FK_Post_Category" Association="Self.FK_Post_Category">
-            <End Role="Catagory" EntitySet="Catagories" />
-            <End Role="Post" EntitySet="Posts" />
+            <End Role="Catagory" EntitySet="Catagory" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_User" Association="Self.FK_Post_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Post" EntitySet="Post" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -199,16 +250,8 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="NewsWebAppModelStoreContainer" CdmEntityContainer="NewsWebAppEntities1">
-          <EntitySetMapping Name="authors">
-            <EntityTypeMapping TypeName="NewsWebAppModel.author">
-              <MappingFragment StoreEntitySet="author">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Catagories">
+        <EntityContainerMapping StorageEntityContainer="NewsWebAppModelStoreContainer" CdmEntityContainer="NewsWebAppEntities3">
+          <EntitySetMapping Name="Catagory">
             <EntityTypeMapping TypeName="NewsWebAppModel.Catagory">
               <MappingFragment StoreEntitySet="Catagory">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -216,19 +259,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="counter">
+            <EntityTypeMapping TypeName="NewsWebAppModel.counter">
+              <MappingFragment StoreEntitySet="counter">
+                <ScalarProperty Name="slid" ColumnName="slid" />
+                <ScalarProperty Name="ipaddress" ColumnName="ipaddress" />
+                <ScalarProperty Name="createddate" ColumnName="createddate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Messages">
-            <EntityTypeMapping TypeName="NewsWebAppModel.Message">
+            <EntityTypeMapping TypeName="NewsWebAppModel.Messages">
               <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="Message1" ColumnName="Message" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
                 <ScalarProperty Name="SentDate" ColumnName="SentDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Posts">
+          <EntitySetMapping Name="Post">
             <EntityTypeMapping TypeName="NewsWebAppModel.Post">
               <MappingFragment StoreEntitySet="Post">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -243,9 +296,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Subscribers">
+          <EntitySetMapping Name="Subscriber">
             <EntityTypeMapping TypeName="NewsWebAppModel.Subscriber">
               <MappingFragment StoreEntitySet="Subscriber">
+                <ScalarProperty Name="createdate" ColumnName="createdate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -253,7 +307,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="NewsWebAppModel.sysdiagram">
+            <EntityTypeMapping TypeName="NewsWebAppModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -263,9 +317,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
+          <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="NewsWebAppModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="wallpaperurl" ColumnName="wallpaperurl" />
+                <ScalarProperty Name="imgurl" ColumnName="imgurl" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
@@ -287,7 +347,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

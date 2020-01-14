@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -7,14 +8,26 @@ using news.Models;
 
 namespace news.Controllers
 {
+    [HandleError]
     public class HomeController : Controller
     {
-        NewsWebAppEntities _db = new NewsWebAppEntities();
+        NewsWebAppEntities3 _db = new NewsWebAppEntities3();
 
         public ActionResult Index()
         {
-
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Subcribe([Bind(Include = "Name,Email")] Subscriber subcribe)
+        {
+            if (ModelState.IsValid)
+            {
+                subcribe.createdate = System.DateTime.Now;
+                _db.Subscriber.Add(subcribe);
+                _db.SaveChanges();
+            }
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
         public ActionResult Search(string key)
@@ -125,11 +138,11 @@ namespace news.Controllers
                 return PartialView(v.ToList());
             }
         }
-        public ActionResult getDetail(string postId)
+        public ActionResult getDetail(string id)
         {
-            ViewBag.postId = postId;
+            ViewBag.postId = id;
             var v = from t in _db.Post
-                    where t.Id == postId
+                    where t.Id == id
                     orderby t.CreatedDate descending
                     select t;
             return PartialView(v.ToList());
@@ -138,10 +151,24 @@ namespace news.Controllers
         {
             return View();
         }
-        public ActionResult Detail(string postId)
+
+        public Post getById(string id)
         {
-            
-            return View();
+            return _db.Post.Where(x => x.Id == id).FirstOrDefault();
+
+        }
+
+        public ActionResult Detail(string id)
+        {
+            var v = (from t in _db.Post
+                     where t.Id == id
+                     select t.NumOfVisitors).First();
+                Post temp = getById(id);
+                temp.NumOfVisitors = v + 1;
+                _db.Entry(temp).State = EntityState.Modified;
+                _db.SaveChanges();
+            ViewBag.name = id;
+            return View(v);
         }
     }
 }

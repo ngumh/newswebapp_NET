@@ -12,7 +12,18 @@ namespace news
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapRoute(
+                 "Error",
+                 url: "Error/{action}",
+                 new { controller = "Error", action = "PageNotFound" },
+                 namespaces: new[] { "news.Controllers" }
+             );
+            routes.MapRoute(
+                 "Contact",
+                 url: "Contact/{action}",
+                 new { controller = "Contact", action = "Index" },
+                 namespaces: new[] { "news.Controllers" }
+             );
             routes.MapRoute(
                 name: "Default",
                 url: "{action}/{id}",
@@ -20,6 +31,7 @@ namespace news
                 namespaces: new[] { "news.Controllers" }
 
             );
+ 
         }
     }
 }

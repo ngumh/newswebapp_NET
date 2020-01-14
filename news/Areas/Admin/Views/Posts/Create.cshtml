@@ -24,7 +24,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.ImageURL, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ImageURL,"Hình Đại Diện", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <input type="file" name="img" id="img" accept=".jpg,.png,.gif,.jpeg,.bmp" />
             @Html.ValidationMessageFor(model => model.ImageURL, "", new { @class = "text-danger" })
@@ -32,7 +32,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Title,"Tiêu Đề", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
@@ -40,7 +40,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Author_Id, "Author_Id", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Author_Id, "Tác Giả", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("Author_Id", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Author_Id, "", new { @class = "text-danger" })
@@ -48,7 +48,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Catagory_Id, "Catagory_Id", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Catagory_Id, "Thể Loại", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("Catagory_Id", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Catagory_Id, "", new { @class = "text-danger" })
@@ -56,32 +56,44 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Content,"Nội Dung", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextAreaFor(model => model.Content, new { @id = "content", htmlAttributes = new { @class = "form-control", @rows = 5 } })
+            @Html.TextAreaFor(model => model.Content, new { @id = "content1", htmlAttributes = new { @class = "form-control", @rows = 10 } })
             @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
         </div>
     </div>
     <script>
-        CKEDITOR.replace("content");
+        CKEDITOR.replace("content1");
     </script>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.IsBreakingNews, htmlAttributes: new { @class = "control-label col-md-2" })
+
+        @Html.LabelFor(model => model.IsBreakingNews, htmlAttributes: new { @class = "control-label  col-md-2" })
+
         <div class="col-md-10">
-            @Html.CheckBoxFor(model => model.BoolValue, htmlAttributes: new { @class = "checkbox ", @style = "width: 30px; height: 30px; border-color: #9575cd"})
+            @Html.CheckBoxFor(model => model.BoolValue, htmlAttributes: new { @class = "checkbox ", @style = "position: relative ;left : 0;opacity: 1;width: 30px; height: 30px; border-color: #9575cd" })
             @Html.ValidationMessageFor(model => model.IsBreakingNews, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Create" class="btn btn-outline-danger" />
         </div>
     </div>
 </div>
 }
 
+<script>
+        $(function () {
+            $("#Title").keyup(function () {
+                var text = $.trim($(this).val().toLowerCase());
+                var text_create;
+                text_create = text.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a").replace(/\ /g, '-').replace(/đ/g, "d").replace(/đ/g, "d").replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y").replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u").replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ.+/g, "o").replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ.+/g, "e").replace(/ì|í|ị|ỉ|ĩ/g, "i");
+                $('#Id').val(text_create);
+            }).keyup();
+    });
+</script>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

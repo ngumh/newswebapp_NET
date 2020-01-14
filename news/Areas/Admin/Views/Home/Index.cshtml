@@ -1,5 +1,307 @@
-﻿<h1>Home</h1>
-@if (Session["UserName"] != null)
-{
-    <text>Welcome @Session["UserName"].ToString() </text>
+﻿@{
+    ViewBag.Title = "Dashboard";
 }
+
+<h3>Dashboard</h3>
+
+<style>
+    #chart_container {
+        margin-top: 50px;
+        height: 450px !important;
+        padding: 1px;
+        border-radius: 5px;
+        background: white;
+    }
+
+    #chart_container1 {
+        margin-top: 50px;
+        border-radius: 5px;
+        background: white;
+        border-radius: 5px;
+        height: 450px !important;
+    }
+</style>
+
+<div class="row">
+
+    <!-- Column -->
+
+    <div class="col-md-6 col-lg-3">
+
+        <div class="card card-body">
+
+            <!-- Row -->
+
+            <div class="row">
+
+                <!-- Column -->
+
+                <div class="col p-r-0 align-self-center">
+
+                    <h2 class="font-light m-b-0">@ViewBag.Postscount</h2>
+
+                    <h6 class="text-muted">Bài Viết</h6>
+                </div>
+
+                <!-- Column -->
+
+                <div class="col text-right align-self-center">
+
+                    <div> <i class="fas fa-file" style="font-size:60px;"></i></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Column -->
+
+    <div class="col-md-6 col-lg-3">
+
+        <div class="card card-body">
+
+            <!-- Row -->
+
+            <div class="row">
+
+                <!-- Column -->
+
+                <div class="col p-r-0 align-self-center">
+
+                    <h2 class="font-light m-b-0">@ViewBag.subscount</h2>
+
+                    <h6 class="text-muted">Người theo dõi</h6>
+                </div>
+
+                <!-- Column -->
+
+                <div class="col text-right align-self-center">
+
+                    <div> <i class="fas fa-user" style="font-size:60px;"></i></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Column -->
+
+    <div class="col-md-6 col-lg-3">
+
+        <div class="card card-body">
+
+            <!-- Row -->
+
+            <div class="row">
+
+                <!-- Column -->
+
+                <div class="col p-r-0 align-self-center">
+
+                    <h2 class="font-light m-b-0">@ViewBag.Viewerscount</h2>
+
+                    <h6 class="text-muted">Số lượt xem</h6>
+                </div>
+
+                <!-- Column -->
+
+                <div class="col text-right ">
+
+                    <div> <i class="fas fa-users" style="font-size:60px;"></i></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Column -->
+
+    <div class="col-md-6 col-lg-3">
+
+        <div class="card card-body">
+
+            <!-- Row -->
+
+            <div class="row">
+
+                <!-- Column -->
+
+                <div class="col p-r-0 align-self-center">
+
+                    <h2 class="font-light m-b-0">@ViewBag.Messagescount</h2>
+
+                    <h6 class="text-muted">Tin Nhắn</h6>
+                </div>
+
+                <!-- Column -->
+
+                <div class="col text-right align-self-center">
+
+                    <div> <i class="fas fa-envelope" style="font-size:60px;"></i></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="row">
+
+    <!-- Column -->
+
+    <div class="col-lg-6 col-md-12">
+
+        <div class="card">
+
+            <div class="card-body" id="chart_container">
+
+                <canvas id="bar_chart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Column -->
+
+    <div class="col-lg-6 col-md-12">
+
+        <div class="card">
+
+            <div class="card-body" id="chart_container1">
+
+                <canvas id="line_chart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<!-- Row -->
+
+
+<script>
+    var line_data =@Html.Raw(Json.Encode(ViewBag.sub))
+    var ctx1 = $("#line_chart")
+    var linechart = new Chart(ctx1, {
+        type: 'line',
+        data: {
+            labels:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"],
+            datasets: [{
+                label:"Subcriber",
+                data: line_data,
+                "fill": false,
+			    "backgroundColor": "#00ad5f ",
+                "borderColor": "#00ad5f",
+                "borderDash": [5, 5],
+                "lineTension": false,
+            }],
+        },
+        options: {
+			title: {
+				display: true,
+				text: 'THỐNG KÊ SỐ NGƯỜI THEO DÕI THEO THÁNG'
+			},
+			tooltips: {
+				mode: 'index',
+				intersect: false,
+			},
+			hover: {
+				mode: 'nearest',
+				intersect: true
+			},
+			scales: {
+				xAxes: [{
+					display: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Tháng'
+                    },
+                    ticks: {
+                    beginAtZero: true,
+                        suggestedMax: 15
+                    },
+				}],
+				yAxes: [{
+					display: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Giá Trị'
+                    },
+                    ticks: {
+                    beginAtZero: true,
+                        userCallback: function (label, index, labels) {
+                            if (Math.floor(label) === label) {
+                                return label;
+                            }
+                        },
+                        suggestedMax: 8
+                    },
+				}]
+			}
+		}
+    })
+
+</script>
+
+
+<script>
+
+    var data =@Html.Raw(Json.Encode(ViewBag.REP))
+    var ctx = $("#bar_chart")
+    var barchart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels:@Html.Raw(Json.Encode(ViewBag.name)),
+            datasets: [{
+                label:"Bài viết",
+                data:data,
+                backgroundColor:"#00ad5f",
+                borderColor : "#00ad5f",
+                borderWidth : "3",
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        userCallback: function(label, index, labels) {
+                             // when the floored value is the same as the value we have a whole number
+                             if (Math.floor(label) === label) {
+                                 return label;
+                             }
+
+                        },
+                        suggestedMax: 5
+                    },
+                }],
+            },
+            legends: { display: false },
+                title: {
+                display: true,
+                        text: `THỐNG KÊ THÁNG @DateTime.Now.Month CÓ @ViewBag.fname BÀI VIẾT`,
+                }
+        },
+
+    })
+
+</script>

@@ -13,11 +13,11 @@
             <div class="col-12 col-md-6">
                 <div class="single-blog-post style-3">
                     <div class="post-thumb">
-                        <a href="@Url.Action("Detail", "Home", new { postId = @i.Id})"><img src="~/Content/upload/img/news/@i.ImageURL" alt=""></a>
+                        <a href="@Url.Action("Detail", "Home", new { id = @i.Id})"><img style="width:100%; height:100%"  src="~/Content/upload/img/news/@i.ImageURL" alt=""></a>
                     </div>
                     <div class="post-data">
                         <a href="@Url.Action("Category", "Home", new { id = @i.Catagory.Name})" class="post-catagory">@i.Catagory.Name</a>
-                        <a href="@Url.Action("Detail", "Home", new { postId = @i.Id })" class="post-title">
+                        <a href="@Url.Action("Detail", "Home", new { id = @i.Id })" class="post-title">
                             <h6>@i.Title</h6>
                         </a>
                     </div>

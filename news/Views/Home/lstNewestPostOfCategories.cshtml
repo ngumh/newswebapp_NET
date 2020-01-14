@@ -9,7 +9,7 @@
         <div class="post-data">
             <a href="@Url.Action("Category", "Home", new { id = item.Catagory.Name})" class="post-catagory">@item.Catagory.Name</a>
             <div class="post-meta">
-                <a href="@Url.Action("Detail", "Home", new { postId = item.Id })" class="post-title">
+                <a href="@Url.Action("Detail", "Home", new { id = item.Id })" class="post-title">
                     <h6>@item.Title</h6>
                 </a>
                 <p class="post-date"><span>@item.CreatedDate.Value.Hour:@item.CreatedDate.Value.Minute @item.CreatedDate.Value.ToString("tt", System.Globalization.CultureInfo.InvariantCulture)</span> | <span>@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(item.CreatedDate.Value.Month) @item.CreatedDate.Value.Day</span></p>
